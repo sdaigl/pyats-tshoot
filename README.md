@@ -29,22 +29,22 @@ python3 tshoot.py  -c "show mac address-table" -k mac_address -V "000c.2957.bd7f
 
 ## command exemples:
 ### Troubleshooting mac addresses
-python3 tshoot.py  -c "show mac address-table" -k mac_address -V "000c.2957.bd7f" -r -d SWRACKF -d SWRACKE -d SWRACKD -d SWRACKC -d SWRACKB -d SWRACKA
-python3 tshoot.py  -c "show arp" -k link_layer_address -V "000c.2957.bd7f" -d SWRACKF -d SWRACKE -d SWRACKD -d SWRACKC -d SWRACKB -d SWRACKA
+- python3 tshoot.py  -c "show mac address-table" -k mac_address -V "000c.2957.bd7f" -r -d SWRACKF -d SWRACKE -d SWRACKD -d SWRACKC -d SWRACKB -d SWRACKA
+- python3 tshoot.py  -c "show arp" -k link_layer_address -V "000c.2957.bd7f" -d SWRACKF -d SWRACKE -d SWRACKD -d SWRACKC -d SWRACKB -d SWRACKA
 
 ### Troubleshooting interfaces
-python3 tshoot.py  -c "show interface trunk" -k status -d SWRACKD
-python3 tshoot.py  -c "show interfaces" -k oper_status -d SWRACKD
+- python3 tshoot.py  -c "show interface trunk" -k status -d SWRACKD
+- python3 tshoot.py  -c "show interfaces" -k oper_status -d SWRACKD
 
 ### Looking at various counters
-python3 tshoot.py   -c "show interfaces"  -k in_errors -V 0 -o ">" -d SWRACKD
-python3 tshoot.py -c "show interfaces" -k in_pkts -V 25011394 -o ">" -d SWRACKD
-python3 tshoot.py -c "show interfaces" -k in_pkts -V 1 -o ">" -d SWRACKA -d SWRACKB -d SWRACKC -d SWRACKD -d SWRACKE -d SWRACKF
-python3 tshoot.py -c "show interfaces" -k out_pkts -V "0" -o ">" -r  -d SWRACKB SWRACKA
+- python3 tshoot.py   -c "show interfaces"  -k in_errors -V 0 -o ">" -d SWRACKD
+- python3 tshoot.py -c "show interfaces" -k in_pkts -V 25011394 -o ">" -d SWRACKD
+- python3 tshoot.py -c "show interfaces" -k in_pkts -V 1 -o ">" -d SWRACKA -d SWRACKB -d SWRACKC -d SWRACKD -d SWRACKE -d SWRACKF
+- python3 tshoot.py -c "show interfaces" -k out_pkts -V "0" -o ">" -r  -d SWRACKB SWRACKA
 
 ### other commands
-python3 tshoot.py  -c "dir flash:" -k size -d SWRACKD
-python3 tshoot.py  -c "show ip route" -k metric -d SWRACKD
-python3 tshoot.py  -c "show running-config" -d SWRACKD
-python3 tshoot.py  -c "show configuration" -d SWRACKD
+- python3 tshoot.py  -c "dir flash:" -k size -d SWRACKD
+- python3 tshoot.py  -c "show ip route" -k metric -d SWRACKD
+- python3 tshoot.py  -c "show running-config" -d SWRACKD
+- python3 tshoot.py  -c "show configuration" -d SWRACKD
 
