@@ -2,7 +2,7 @@ tshoot.py: A tool to print tree indexes, keys and values when parsing commands u
 
 # Important notes
 ## Mandatory options:
-- You must set the TESTBED parameter in the file
+- You must set the TESTBED parameter in the script
 - The -d option must be last in the command line.  It is use to specifies devices to be scan in testbed (you can append them, that is why it must be last)
 - The -c option ithe command to be executed, without any other options will printout the json tree
 
