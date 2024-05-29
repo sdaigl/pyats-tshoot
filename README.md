@@ -7,11 +7,11 @@ tshoot.py: A tool to print tree indexes, keys and values when parsing commands u
 - The -c option ithe command to be executed, without any other options will printout the json tree
 
 ## Other options:
--t Testbed to be use if not using default
--k to specify the k to be search will print out the required json indexes to reach the key value
--V option to match a value or and expression (using the -o option), of course, the -k option must be present
--o operator, default to ==, enables you to search for a particular value for the search key, the -V option must be present
--r  roundabout, default to false, will print out all values, keys for the level with the values was found, the -V option must be present
+- t Testbed to be use if not using default
+- k to specify the k to be search will print out the required json indexes to reach the key value
+- V option to match a value or and expression (using the -o option), of course, the -k option must be present
+- o operator, default to ==, enables you to search for a particular value for the search key, the -V option must be present
+- r  roundabout, default to false, will print out all values, keys for the level with the values was found, the -V option must be present
 
 ## In summary:
 1. To print the json tree result for a command
