@@ -27,7 +27,7 @@ python3 tshoot.py  -c "show ip int brief" -k ip_address -V 192.168.2.254 -d SWRA
 4. To show values present at the same-level key
 python3 tshoot.py  -c "show mac address-table" -k mac_address -V "000c.2957.bd7f" -r -d SWRACKF -d SWRACKE -d SWRACKD -d SWRACKC -d SWRACKB -d SWRACKA
 
-## command exemples:
+## command examples:
 ### Troubleshooting mac addresses
 - python3 tshoot.py  -c "show mac address-table" -k mac_address -V "000c.2957.bd7f" -r -d SWRACKF -d SWRACKE -d SWRACKD -d SWRACKC -d SWRACKB -d SWRACKA
 - python3 tshoot.py  -c "show arp" -k link_layer_address -V "000c.2957.bd7f" -d SWRACKF -d SWRACKE -d SWRACKD -d SWRACKC -d SWRACKB -d SWRACKA
