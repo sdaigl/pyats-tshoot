@@ -17,7 +17,7 @@ Other options:
 In summary:
 1) To print the json tree result for a command
 python3 tshoot.py -c "show ip int brief" -d SWRACKB SWRACKA
-this will give you the indexes to extract the value for exemple: print(p1['interface']['Vlan1']['ip_address'])
+this will give you the indexes to extract the value for example: print(p1['interface']['Vlan1']['ip_address'])
 
 2) To show values for a particular key
 python3 tshoot.py  -c "show ip int brief" -k ip_address -d SWRACKD -d SWRACKC
@@ -28,7 +28,7 @@ python3 tshoot.py  -c "show ip int brief" -k ip_address -V 192.168.2.254 -d SWRA
 4) To show values present at the same-level key
 python3 tshoot.py  -c "show mac address-table" -k mac_address -V "000c.2957.bd7f" -r -d SWRACKF -d SWRACKE -d SWRACKD -d SWRACKC -d SWRACKB -d SWRACKA
 
-command exemples:
+command examples:
 # Troubleshooting mac addresses
 python3 tshoot.py  -c "show mac address-table" -k mac_address -V "000c.2957.bd7f" -r -d SWRACKF -d SWRACKE -d SWRACKD -d SWRACKC -d SWRACKB -d SWRACKA
 python3 tshoot.py  -c "show arp" -k link_layer_address -V "000c.2957.bd7f" -d SWRACKF -d SWRACKE -d SWRACKD -d SWRACKC -d SWRACKB -d SWRACKA
@@ -75,7 +75,7 @@ import operator
 
 #  Options parser
 parser = OptionParser()
-parser.add_option("-t", "--testbed", dest="tb",default=TESTBED,help="test bed to analyse")
+parser.add_option("-t", "--testbed", dest="tb",default=TESTBED,help="test bed to analyze")
 parser.add_option("-c", "--command", dest="cmd",default="show version",help="command to execute")
 parser.add_option("-k", "--key", dest="key",default="",help="key to find")
 parser.add_option("-V", "--Value", dest="Val",default="",help="Value to search for the specified key")
@@ -133,9 +133,9 @@ for d in devices:
                 if options.key == "" or options.key == key : print("dict-key:",a)                                  
                 PrintTree(dict1)                                             #start recursive loop
         
-            else  :                                     # analyse key if not a dict
+            else  :                                     # analyze key if not a dict
                 a=printlevel(__level)
-                if options.key == key or printothkey==1:                     # analyse key
+                if options.key == key or printothkey==1:                     # analyze key
                     index=a+"["+"'"+key+"'"+"]"
                     z="print(p1"+index+")"                               # build the command to be used to obtain the result in the json tree               
                     tv="val=p1"+index                                   # create the index
