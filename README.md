@@ -158,7 +158,7 @@ value=up
 - python3 tshoot.py -c "show interfaces" -k out_pkts -V "0" -o ">" -r  -d SWRACKB SWRACKA
 
 ### other commands 
-Of course the learn option could be used but just for fun you can try stuff
+Of course the learn option could be used, but just for fun you can try stuff!
 - python3 tshoot.py  -c "dir flash:" -k size -d SWRACKD
 - python3 tshoot.py  -c "show ip route" -k metric -d SWRACKD
 - python3 tshoot.py  -c "show running-config" -d SWRACKD
