@@ -108,7 +108,7 @@ for d in devices:
     dev = tb.devices[d]                                 # choose device
     dev.connect(learn_hostname=True,log_stdout=False)   # connect using testbed creds
     p1 = dev.parse(options.cmd)                         # *** Send command specify by the -c option ***
-    print ( d+" rresults for: ",options.cmd)                   
+    print ( d+" results for: ",options.cmd)                   
     if options.Val == "" and options.key =="" : print (p1) # print json tree to screen if no other options used
     print("-"*10)                                       # use to speparate devices
 
