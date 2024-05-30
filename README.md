@@ -104,16 +104,61 @@ Key and level found for: SWRACKF: ['interface']['GigabitEthernet0/1']['vlans_in_
 cmd = print(p1['interface']['GigabitEthernet0/1']['vlans_in_stp_forwarding_not_pruned'])
 value=1-48,50,55,100-103,123,210
 ```
-
 - python3 tshoot.py  -c "show interfaces" -k oper_status -d SWRACKD
 
-### Looking at various counters
+```
+python3 tshoot.py -c "show interfaces" -k oper_status -d SWRACKF
+
+SWRACKF results for:  show interfaces
+----------
+Key and level found for: SWRACKF: ['Vlan1']['oper_status']
+cmd = print(p1['Vlan1']['oper_status'])
+value=up
+Key and level found for: SWRACKF: ['FastEthernet0/1']['oper_status']
+cmd = print(p1['FastEthernet0/1']['oper_status'])
+value=down
+Key and level found for: SWRACKF: ['FastEthernet0/2']['oper_status']
+cmd = print(p1['FastEthernet0/2']['oper_status'])
+:
+:
+```
+#### Same command using the -V option with a value of up to see all "up" interfaces
+```
+python3 tshoot.py -c "show interfaces" -k oper_status -V "up" -d SWRACKF
+
+SWRACKF results for:  show interfaces
+----------
+Key and level found for: SWRACKF: ['Vlan1']['oper_status']
+cmd = print(p1['Vlan1']['oper_status'])
+value=up
+Key and level found for: SWRACKF: ['FastEthernet0/4']['oper_status']
+cmd = print(p1['FastEthernet0/4']['oper_status'])
+value=up
+Key and level found for: SWRACKF: ['FastEthernet0/16']['oper_status']
+cmd = print(p1['FastEthernet0/16']['oper_status'])
+value=up
+Key and level found for: SWRACKF: ['FastEthernet0/41']['oper_status']
+cmd = print(p1['FastEthernet0/41']['oper_status'])
+value=up
+Key and level found for: SWRACKF: ['FastEthernet0/44']['oper_status']
+cmd = print(p1['FastEthernet0/44']['oper_status'])
+value=up
+Key and level found for: SWRACKF: ['GigabitEthernet0/1']['oper_status']
+cmd = print(p1['GigabitEthernet0/1']['oper_status'])
+value=up
+
+```
+
+
+
+#### Looking at various counters
 - python3 tshoot.py   -c "show interfaces"  -k in_errors -V 0 -o ">" -d SWRACKD
 - python3 tshoot.py -c "show interfaces" -k in_pkts -V 25011394 -o ">" -d SWRACKD
 - python3 tshoot.py -c "show interfaces" -k in_pkts -V 1 -o ">" -d SWRACKA -d SWRACKB -d SWRACKC -d SWRACKD -d SWRACKE -d SWRACKF
 - python3 tshoot.py -c "show interfaces" -k out_pkts -V "0" -o ">" -r  -d SWRACKB SWRACKA
 
-### other commands
+### other commands 
+Of course the learn option could be used but just for fun you can try stuff
 - python3 tshoot.py  -c "dir flash:" -k size -d SWRACKD
 - python3 tshoot.py  -c "show ip route" -k metric -d SWRACKD
 - python3 tshoot.py  -c "show running-config" -d SWRACKD
