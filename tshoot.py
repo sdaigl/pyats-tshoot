@@ -19,38 +19,20 @@ In summary:
 python3 tshoot.py -c "show ip int brief" -d SWRACKB SWRACKA
 this will give you the indexes to extract the value for example: print(p1['interface']['Vlan1']['ip_address'])
 
-2) To show values for a particular key
+2) To show values for a particular key (options -k)
 python3 tshoot.py  -c "show ip int brief" -k ip_address -d SWRACKD -d SWRACKC
 
-3) To show values that will match an expression
+3) To show values that will match an expression. (options -k, -V, -r and maybe -o if looking at counters)
 python3 tshoot.py  -c "show ip int brief" -k ip_address -V 192.168.2.254 -d SWRACKD -d SWRACKC
 
-4) To show values present at the same-level key
+4) To show values present at the same-level key matching an expression (options -k, -V, -r and maybe -o if looking at counters)
 python3 tshoot.py  -c "show mac address-table" -k mac_address -V "000c.2957.bd7f" -r -d SWRACKF -d SWRACKE -d SWRACKD -d SWRACKC -d SWRACKB -d SWRACKA
 
-command examples:
-# Troubleshooting mac addresses
-python3 tshoot.py  -c "show mac address-table" -k mac_address -V "000c.2957.bd7f" -r -d SWRACKF -d SWRACKE -d SWRACKD -d SWRACKC -d SWRACKB -d SWRACKA
-python3 tshoot.py  -c "show arp" -k link_layer_address -V "000c.2957.bd7f" -d SWRACKF -d SWRACKE -d SWRACKD -d SWRACKC -d SWRACKB -d SWRACKA
-
-# Troubleshooting interfaces
-python3 tshoot.py  -c "show interface trunk" -k status -d SWRACKD
-python3 tshoot.py  -c "show interfaces" -k oper_status -d SWRACKD
-
-# Looking at various counters
-python3 tshoot.py   -c "show interfaces"  -k in_errors -V 0 -o ">" -d SWRACKD
-python3 tshoot.py -c "show interfaces" -k in_pkts -V 25011394 -o ">" -d SWRACKD
-python3 tshoot.py -c "show interfaces" -k in_pkts -V 1 -o ">" -d SWRACKA -d SWRACKB -d SWRACKC -d SWRACKD -d SWRACKE -d SWRACKF
-python3 tshoot.py -c "show interfaces" -k out_pkts -V "0" -o ">" -r  -d SWRACKB SWRACKA
-
-# other commands
-python3 tshoot.py  -c "dir flash:" -k size -d SWRACKD
-python3 tshoot.py  -c "show ip route" -k metric -d SWRACKD
-python3 tshoot.py  -c "show running-config" -d SWRACKD
-python3 tshoot.py  -c "show configuration" -d SWRACKD
+A good place to start with examples:
+https://github.com/sdaigl/pyats-tshoot/blob/main/README.md
 
 
-
+Command référence for pyats:
 https://github.com/CiscoTestAutomation/genieparser/tree/master/src/genie/libs/parser
 
 """
@@ -108,6 +90,7 @@ for d in devices:
     dev = tb.devices[d]                                 # choose device
     dev.connect(learn_hostname=True,log_stdout=False)   # connect using testbed creds
     p1 = dev.parse(options.cmd)                         # *** Send command specify by the -c option ***
+    print("")
     print ( d+" results for: ",options.cmd)                   
     if options.Val == "" and options.key =="" : print (p1) # print json tree to screen if no other options used
     print("-"*10)                                       # use to speparate devices
