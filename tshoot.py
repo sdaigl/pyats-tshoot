@@ -125,6 +125,10 @@ for d in devices:
                     loc={}                                                 
                     exec(tv,globals(),loc)                              # execute the command with the index to extract the value
                     extracted_value = str(loc['val'])                      # value found
+                    if  str(loc['val']).isdigit():
+                        extracted_value=int((loc['val']))
+                        options.Val=int(options.Val)
+                        
                     o_text=get_truth(extracted_value, options.operator, options.Val)
                     if options.Val == ""  :
                         print("Key and level found for: "+d+": "+a+"["+"'"+key+"'"+"]")
