@@ -52,7 +52,7 @@ from pkg_resources import parse_version
 from genie.testbed import load
 from genie.utils import Dq
 from optparse import OptionParser
-import operator
+import operator,re
 
 
 #  Options parser
@@ -66,6 +66,7 @@ parser.add_option("-r", "--roundabout", dest="roundabout",action="store_true", d
 parser.add_option("-d", "--devices", dest="d",action="append",default=EQUIPEMENT,help="device to be parsed option must be the last one in the cli and maybe multiple")
                   
 (options, args) = parser.parse_args()
+
 
 # functions
 def get_truth(inp, relate, cut):
@@ -124,8 +125,8 @@ for d in devices:
                     tv="val=p1"+index                                   # create the index
                     loc={}                                                 
                     exec(tv,globals(),loc)                              # execute the command with the index to extract the value
-                    extracted_value = str(loc['val'])                      # value found
-                    if  str(loc['val']).isdigit():
+                    extracted_value = str(loc['val'])                     # value found
+                    if  str(loc['val']).isdigit() and options.Val != "":
                         extracted_value=int((loc['val']))
                         options.Val=int(options.Val)
                         
